@@ -1,0 +1,56 @@
+@mixin flex($dir: row, $just: center, $align: center, $gap: 0px) {
+  display: flex;
+  flex-direction: $dir;
+  align-items: $align;
+  justify-content: $just;
+  gap: $gap;
+}
+
+@mixin hideScrollBar() {
+  -ms-overflow-style: none;
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    /* WebKit */
+    width: 0;
+    height: 0;
+  }
+}
+
+@mixin square($l, $strict: false) {
+  width: $l;
+  height: $l;
+  @if ($strict) {
+    min-width: $l;
+    min-height: $l;
+  }
+}
+
+$sizes: xxs 320, xs 480, sm 576, md 768, lg 952, xl 1300;
+@mixin mediaQuery($size) {
+  @each $name, $width in $sizes {
+    @if $size == $name {
+      @media screen and (max-width: #{$width}px) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin invertedBorder($selector, $dir, $background, $pseudo: before) {
+  #{$selector} {
+    position: relative;
+    &::#{$pseudo} {
+      content: "";
+      position: absolute;
+      background-color: transparent;
+      width: 20px;
+      height: 25px;
+
+      bottom: 0;
+
+      #{$dir}: -20px;
+      border-bottom-#{if($dir == right, left, right)}-radius: 10px;
+      box-shadow: if($dir == right, -10px, 10px) 0 0 0 $background;
+    }
+  }
+}

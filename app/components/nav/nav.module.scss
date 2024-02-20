@@ -1,0 +1,15 @@
+@use '@/styles/colors.module';
+@use '@/styles/variables.module';
+@use '@/styles/mixins.module';
+
+.nav{
+    height: 100px;
+    @include mixins.flex($just: space-between);
+}
+
+.logo{
+    font: {
+        size: 30px;
+        weight: bold;
+    }
+}

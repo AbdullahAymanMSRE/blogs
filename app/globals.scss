@@ -1,0 +1,33 @@
+@use "@/styles/colors.module";
+@use "@/styles/variables.module";
+@use "@/styles/mixins.module";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: colors.$bg;
+  color: colors.$text;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  padding-inline: variables.$bg-side-margin;
+  min-height: 100vh;
+  max-width: 1500px;
+  margin-inline: auto;
+  @include mixins.flex(column, space-between, stretch);
+}
+
+@include mixins.mediaQuery(md) {
+  .container {
+    margin-inline: variables.$sm-side-margin;
+  }
+}

@@ -1,0 +1,78 @@
+@use "@/styles/colors.module";
+@use "@/styles/mixins.module";
+
+.homeContainer {
+  @include mixins.flex($just: space-between, $align: stretch);
+  max-height: 500px;
+  padding-bottom: 50px;
+}
+%container {
+  width: 45%;
+}
+.textContainer {
+  @extend %container;
+  color: colors.$textSoft;
+  @include mixins.flex(column, space-between, stretch, $gap: 20px);
+  .title {
+    font-size: 64px;
+  }
+  .text {
+    font-size: 20px;
+  }
+  .buttons {
+    @include mixins.flex($just: flex-start, $gap: 50px);
+    a {
+      padding: 15px 20px;
+      border-radius: 10px;
+      &.learn {
+        background: colors.$btn;
+      }
+      &.contact {
+        background: colors.$textSoft;
+        color: colors.$bg;
+      }
+    }
+  }
+  .brands {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.imageContainer {
+  @extend %container;
+  @include mixins.flex();
+  .hero {
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+  }
+}
+
+@include mixins.mediaQuery(lg) {
+  .homeContainer {
+    flex-direction: column-reverse;
+    max-height: unset;
+    gap: 50px;
+  }
+
+  %container {
+    width: 100%;
+  }
+  .imageContainer {
+    @extend %container;
+  }
+
+  .textContainer {
+    @extend %container;
+    .title {
+      font-size: 46px;
+    }
+    .text {
+      font-size: 16px;
+    }
+    .buttons {
+      gap: 30px;
+    }
+  }
+}

@@ -1,0 +1,85 @@
+@use "@/styles/mixins.module";
+@use "@/styles/colors.module";
+
+.close {
+  align-self: flex-end;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: none;
+  cursor: pointer;
+}
+
+.links {
+  @include mixins.flex($gap: 15px);
+  position: relative;
+
+  .open {
+  }
+}
+
+.logout {
+  background: inherit;
+  color: colors.$text;
+  border-radius: 25px;
+  padding: 15px 20px;
+  border: 1px solid colors.$text;
+  transition: 0.3s;
+  cursor: pointer;
+  &:hover {
+    background: colors.$text;
+    color: colors.$bg;
+  }
+  font: {
+    weight: 500;
+    size: 16px;
+  }
+}
+
+.burger {
+  @include mixins.flex($dir: column, $gap: 5px);
+  display: none;
+  cursor: pointer;
+  div {
+    background: colors.$text;
+    width: 24px;
+    height: 2px;
+    border-radius: 10px;
+  }
+}
+
+@include mixins.mediaQuery(lg) {
+  .close {
+    display: unset;
+  }
+  .links {
+    flex-direction: column;
+    transform: translateX(100%);
+    min-height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    justify-content: space-evenly;
+    padding-inline: 30px;
+    background: colors.$text;
+    color: colors.$bg;
+    box-shadow: 0 -2px 3px 3px rgba(black, 0.5);
+    transition: transform 0.5s;
+    .logout {
+      border-color: colors.$bg;
+      color: colors.$bg;
+    }
+  }
+  .open {
+    .links {
+      transform: translateX(0);
+    }
+    .burger {
+      display: none;
+    }
+  }
+  .burger {
+    display: flex;
+    align-self: flex-start;
+  }
+}

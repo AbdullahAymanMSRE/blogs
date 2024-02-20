@@ -10,8 +10,8 @@ export default function HomePage() {
         <p className={styles.text}>
           with 3 years of expertise crafting immersive digital experiences.
           Proficient in PHP Laravel, Python Django, and React JS, I bring
-          creativity and precision to every project. Let's turn your ideas into
-          captivating web realities!
+          creativity and precision to every project. Let &apos; s turn your
+          ideas into captivating web realities!
         </p>
         <div className={styles.buttons}>
           <Link

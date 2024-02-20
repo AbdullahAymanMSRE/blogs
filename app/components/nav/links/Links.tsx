@@ -42,12 +42,14 @@ export default function Links() {
       <div className={styles.links} onClick={() => setOpen(false)}>
         <X className={styles.close} />
         {links.map((l) => (
-          <NavLink title={l.title} path={l.path} />
+          <NavLink key={l.title} title={l.title} path={l.path} />
         ))}
         {auth ? (
           <>
             {admin &&
-              adminLinks.map((l) => <NavLink title={l.title} path={l.path} />)}
+              adminLinks.map((l) => (
+                <NavLink key={l.title} title={l.title} path={l.path} />
+              ))}
             <button className={styles.logout}>Logout</button>
           </>
         ) : (

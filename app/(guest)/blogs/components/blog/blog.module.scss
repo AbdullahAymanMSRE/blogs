@@ -1,0 +1,44 @@
+@use "@/styles/mixins.module";
+@use "@/styles/colors.module";
+
+.blog {
+  width: 320px;
+  height: 470px;
+  border: 1px solid colors.$textSoft;
+  @include mixins.flex(column, $align: flex-start, $gap: 15px);
+  border-radius: 15px;
+  overflow: hidden;
+  .blogContent {
+    flex: 1;
+    @include mixins.flex(column, space-between, flex-start, 15px);
+    padding: 20px {
+      top: 0;
+    }
+  }
+  .title {
+    font: {
+      size: 30px;
+      weight: bold;
+    }
+    text-transform: capitalize;
+  }
+  .desc {
+    max-width: 100%;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 2.8em;
+    line-height: 1.4em;
+    color: colors.$textSoft;
+  }
+  .img {
+    min-height: 300px;
+    min-width: 100%;
+    background: #ccc;
+  }
+  .readMore {
+    text-transform: uppercase;
+    font-size: 14px;
+    text-decoration: underline;
+  }
+}

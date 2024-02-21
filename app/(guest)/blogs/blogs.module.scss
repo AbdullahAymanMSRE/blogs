@@ -1,0 +1,9 @@
+@use "@/styles/mixins.module";
+@use "@/styles/colors.module";
+
+.blogsList {
+  @include mixins.flex($align: flex-start, $gap: 30px);
+  margin-top: 20px;
+  flex-wrap: wrap;
+  flex: 1;
+}

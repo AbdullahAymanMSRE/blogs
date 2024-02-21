@@ -28,6 +28,6 @@ a {
 
 @include mixins.mediaQuery(md) {
   .container {
-    margin-inline: variables.$sm-side-margin;
+    padding-inline: variables.$sm-side-margin;
   }
 }
